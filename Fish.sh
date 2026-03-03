@@ -11,8 +11,9 @@ echo "Knock the health out of that FISH!"
 my_health=100
 bad_health=100
 counter=0
+game_end=0
 
-while [ $my_health -ne 0 ]
+while [[ $my_health -ne 0 && $game_end -eq 0 ]]
 do
 	
 	# GAME START MESSAGES
@@ -47,6 +48,8 @@ do
 		if [[ $answerz=='Y' ]]
 		then
 			echo "The fish of an unknown name swims off to the sunset alone. It doesn't even look back. It did not wish to befriend you."
+			$game_end=$((game_end+1))
+			break
 		fi
 
 		#Player chose to not spare the fish
@@ -57,8 +60,8 @@ do
 			echo "$name took -1000hp."
 			echo "$name was destroyed by mysterious fish."
 			echo "Game over."
-	
-			continue
+			$game_end=$((game_end+1))
+			break
 		fi
 	
 	fi
@@ -69,13 +72,15 @@ do
 
 	while [[ $answer=='Y' || $answer=='N' ]]
 	do
-		if [[ $answer=='Y' ]]
+		if [[ $answer=='Y' && $bad_health -eq 100 ]]
 		then
 			bad_health=$((bad_health-49))
 		
 			echo "do you really wanna punch it? It just a fish."
 			echo "fish now has $bad_health hp"
-			continue
+
+			#Break exit this while loop
+			break
 		fi	
 
 		
@@ -88,31 +93,35 @@ do
 		if [[ $answer=='N' ]]; then
 			echo "Fish flinches.(You didnt punch it)"
 			let $counter=$counter+1
-			continue
+			break
 		
 		elif [ $answer='N' ] && [ $counter=1 ]; then
 			echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
 			let $counter=$counter+1
-			continue
+			break
 
 		elif [ $answer='N' ] && [ $counter=2 ]; then
 			echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
 			echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
-			read continue
+			read
 			
 
 			if [[ $answer=='Y' ]]; then
 				echo "Fish says do you wanna hang out. You hold nands and swim together.The fish tells you its name, its Anita a name that means grace. You watch the sunset. Gameover.. did you win...?"
-				continue
+				$game_end=$((game_end+1))
+				break
 			fi
 
 			if [[ $answer=='N' ]]; then
 				echo "fish grabs your fist and throws you to the side. GAME OVER."
-				continue
+				$game_end=$((game_end+1))
+				break
 			fi
 
 		else
 			echo "enter Y/N dude(plz restart script probs :] )"
+			$game_end=$((game_end+1))
+			break
 		fi
 	done
 	
