@@ -87,9 +87,10 @@ do
 			echo "$name took -1000hp."
 			echo "$name was destroyed by mysterious fish."
 			echo "Game over."
-			break
+	
+	break
 		fi	
 	fi
-done
+	done
 done
 #(While loops done here)
