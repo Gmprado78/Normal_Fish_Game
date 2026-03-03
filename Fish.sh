@@ -29,48 +29,9 @@ do
 	echo "punch fish?(Y)"
 	echo "don't punch fish.(N)"
 
-	read answer
-
-	while answer=Y || answer=N;
-	do
-
-	if answer=Y
-	then
-		bad_health -=49
-		
-		echo "do you really wanna punch it? It just a fish."
-		echo "fish now has $bad_health hp"
-
-#fish 4 turns to kill to me
-#If I DONT punch fish counter goes up by one.
-#human does 49 damage ( 3 punches to kill)
-
-	if answer=N; then
-		echo "Fish flinches.(You didnt punch it)"
-	fi
-	elif answer=N && counter=1; then
-		echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
-	elif answer=N && counter=2; then
-		echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
-		echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
-		read answer
-
-		if answer=Y; then
-			echo "Fish says do you wanna hang out. You hold nands and swim together.The fish tells you its name, its Anita a name that means grace. You watch the sunset. Gameover.. did you win...?"
-			break
-		fi
-
-		if answer=N; then
-			echo "fish grabs your fist and throws you to the side. GAME OVER."
-			break
-		fi
-
-	else
-		echo "enter Y/N dude(plz restart script probs :] )"
-	
-
-
+	#CHECK IF FISH IS ABOUT TO DIE BEFORE NEXT ATTACK	
 	#IF fish was hurt twice already(2hp)
+		
 	if bad_health=2;
 	then
 		echo "You can still befriend this fish."
@@ -89,8 +50,49 @@ do
 			echo "Game over."
 	
 			break
-		fi	
+	
 	fi
-	done
+
+	#READ ANSWER OF INITIAL PUNCH FISH OR DONT
+	
+	read answer
+
+	while answer=Y || answer=N;
+	do
+		if answer=Y
+		then
+			bad_health -=49
+		
+			echo "do you really wanna punch it? It just a fish."
+			echo "fish now has $bad_health hp"
+
+		#fish 4 turns to kill to me
+		#If I DONT punch fish counter goes up by one.
+		#human does 49 damage ( 3 punches to kill)
+
+		if answer=N; then
+			echo "Fish flinches.(You didnt punch it)"
+		fi
+		elif answer=N && counter=1; then
+			echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
+		elif answer=N && counter=2; then
+			echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
+			echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
+			read answer
+
+		if answer=Y; then
+			echo "Fish says do you wanna hang out. You hold nands and swim together.The fish tells you its name, its Anita a name that means grace. You watch the sunset. Gameover.. did you win...?"
+			break
+		fi
+
+		if answer=N; then
+			echo "fish grabs your fist and throws you to the side. GAME OVER."
+			break
+		fi
+
+	else
+		echo "enter Y/N dude(plz restart script probs :] )"
+	
+
 done
 #(While loops done here)
