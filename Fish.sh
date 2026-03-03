@@ -24,7 +24,7 @@ do
 	
 	#Fish wrecklessly attacking you
 	echo "OUCH the fish slapped you"
-	let $my_health=$my_health-10
+	my_health=$((my_health-10))
 	echo "You took 10hp, you have $my_health hp"
 
 	#Display attack to do
@@ -58,7 +58,7 @@ do
 			echo "$name was destroyed by mysterious fish."
 			echo "Game over."
 	
-			break
+			continue
 		fi
 	
 	fi
@@ -71,11 +71,12 @@ do
 	do
 		if [[ $answer=='Y' ]]
 		then
-			let $bad_health=$bad_health-49
+			bad_health=$((bad_health-49))
 		
 			echo "do you really wanna punch it? It just a fish."
 			echo "fish now has $bad_health hp"
-			return
+			continue
+		fi	
 
 		
 		#If I DONT punch fish counter goes up by one.
@@ -87,27 +88,27 @@ do
 		if [[ $answer=='N' ]]; then
 			echo "Fish flinches.(You didnt punch it)"
 			let $counter=$counter+1
-			return
+			continue
 		
 		elif [ $answer='N' ] && [ $counter=1 ]; then
 			echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
 			let $counter=$counter+1
-			return
+			continue
 
 		elif [ $answer='N' ] && [ $counter=2 ]; then
 			echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
 			echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
-			read answer
+			read continue
 			
 
 			if [[ $answer=='Y' ]]; then
 				echo "Fish says do you wanna hang out. You hold nands and swim together.The fish tells you its name, its Anita a name that means grace. You watch the sunset. Gameover.. did you win...?"
-				break
+				continue
 			fi
 
 			if [[ $answer=='N' ]]; then
 				echo "fish grabs your fist and throws you to the side. GAME OVER."
-				break
+				continue
 			fi
 
 		else
