@@ -11,7 +11,6 @@ echo "Knock the health out of that FISH!"
 my_health=100
 bad_health=100
 counter=0
-bad_counter=0
 
 while [ $my_health -ne 0 ]
 do
@@ -78,14 +77,23 @@ do
 			echo "fish now has $bad_health hp"
 			return
 
+		
 		#If I DONT punch fish counter goes up by one.
 		#Fisherman does 49 damage ( 3 punches to kill)
 
+
+		#Choosing to not punch + different messages
+
 		if [[ $answer=='N' ]]; then
 			echo "Fish flinches.(You didnt punch it)"
+			let $counter=$counter+1
+			return
 		
 		elif [ $answer='N' ] && [ $counter=1 ]; then
 			echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
+			let $counter=$counter+1
+			return
+
 		elif [ $answer='N' ] && [ $counter=2 ]; then
 			echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
 			echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
