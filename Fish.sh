@@ -88,7 +88,7 @@ do
 			echo "$name was destroyed by mysterious fish."
 			echo "Game over."
 	
-	break
+			break
 		fi	
 	fi
 	done
