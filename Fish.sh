@@ -34,13 +34,21 @@ do
 	elif answer= N $$ counter=1
 		echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
 	elif answer=N && counter=2
-		echo "	
+		echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
+		echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
+		read answer
+		if answer=Y:
+			echo "Fish says do you wanna hang out. You hold nands and swim together.The fish tells you its name, its Anita a name that means grace. You watch the sunset. Gameover.. did you win...?"
+			break
+		if answer=N	
+
 	else
-		echo "enter Y/N dude"
+		echo "enter Y/N dude(plz restart script probs :] )"
 	fi
 
-
+	#IF fish was hurt twice already(2hp)
 	if [ $bad_health=2 ]
+		echo "
 
 			
 
@@ -54,12 +62,8 @@ echo "Ouch that fish Slapped me!"
 
 echo "health depleted __ points"
 
-echo "Do#Display after every other turn
-echo "Your health is $my_health"
-echo "Wild fish health is $bad_health"nt punch fish"
 
 ## IF do not punch fish scenarios
-# Fish smiles and waves and makes you pinky promise to never hurt a fish. EVER.?
 # DO YOU ACCEPT? PUNCH OR accept?(Y/N)
 
 # if DO punch after yes, fish grabs your fist and throws you to the side. GAME OVER.
