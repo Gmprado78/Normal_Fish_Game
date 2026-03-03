@@ -1,6 +1,10 @@
 #! /bin/bash
 name=$1
 
+#This is a game regarding a feud between a fisherman and a fish. We may never know the relationship between these two charachters until now. Before running ./Fish.sh add your name.
+
+
+
 echo "You are fisherman named $name"
 echo "Knock the health out of that FISH!"
 
@@ -9,7 +13,7 @@ bad_health=100
 counter=0
 bad_counter=0
 
-while [ $my_health -ne 0 ]
+while [ $my_health -ne 0 ];
 do
 	
 	#Display after every other turn
@@ -27,7 +31,8 @@ do
 
 	read answer
 
-	while answer=Y || answer=N:
+	while answer=Y || answer=N;
+	do
 
 	if answer=Y
 	then
@@ -42,6 +47,7 @@ do
 
 	if answer=N; then
 		echo "Fish flinches.(You didnt punch it)"
+	fi
 	elif answer=N && counter=1; then
 		echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
 	elif answer=N && counter=2; then
@@ -61,7 +67,8 @@ do
 
 	else
 		echo "enter Y/N dude(plz restart script probs :] )"
-	fi
+	
+
 
 	#IF fish was hurt twice already(2hp)
 	if bad_health=2;
@@ -83,11 +90,6 @@ do
 			break
 		fi	
 	fi
-
+done
 done
 #(While loops done here)
-
-##If do punch fish
-#fish 4 turns to kill to me
-#If I DONT punch fish counter goes up by one.
-#human does 49 damage ( 3 punches to kill)
