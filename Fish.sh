@@ -92,15 +92,17 @@ do
 
 		if [[ $answer=='N' ]]; then
 			echo "Fish flinches.(You didnt punch it)"
-			let $counter=$counter+1
+			let $counter=counter+1
 			break
+		fi	
 		
-		elif [ $answer='N' ] && [ $counter=1 ]; then
+		if [ $answer='N' ] && [ $counter=1 ]; then
 			echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
-			let $counter=$counter+1
+			let $counter=counter+1
 			break
+		fi	
 
-		elif [ $answer='N' ] && [ $counter=2 ]; then
+		if [ $answer='N' ] && [ $counter=2 ]; then
 			echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
 			echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
 			read
