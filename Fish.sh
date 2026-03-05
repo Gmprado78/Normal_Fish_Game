@@ -13,6 +13,8 @@ bad_health=100
 counter=0
 game_end=0
 
+
+#While fish is not dead and no game_end triggered
 while [[ $my_health -ne 0 && $game_end -eq 0 ]]
 do
 	
@@ -33,6 +35,11 @@ do
 	echo "don't punch fish.(N)"
 
 
+	if [[ $my_health -eq 0 ]];
+	then
+	       echo "FISH has totally obliterated you."
+	       ((game_end++))
+	fi	       
 
 	#CHECK IF FISH IS ABOUT TO DIE BEFORE NEXT ATTACK	
 	#IF fish was hurt twice already(2hp)
@@ -45,7 +52,7 @@ do
 		read answerz
 		
 		#Player chose to spare the fish
-		if [[ $answerz=='Y' ]]
+		if [[ $answerz=='Y' || $answerz=='y' ]]
 		then
 			echo "The fish of an unknown name swims off to the sunset alone. It doesn't even look back. It did not wish to befriend you."
 			$game_end=$((game_end+1))
@@ -53,10 +60,10 @@ do
 		fi
 
 		#Player chose to not spare the fish
-		if [[ $answerz=='N' ]]
+		if [[ $answerz=='N' || $answerz=='n' ]]
 		then
 
-			echo "Fish did not give you a chance. Fish whistles and calls its fishy friends. A shadow the size of a while looms under your boat."
+			echo "Fish did not give you a chance. Fish whistles and calls its fishy friends. A shadow the size of a whale looms under your boat."
 			echo "$name took -1000hp."
 			echo "$name was destroyed by mysterious fish."
 			echo "Game over."
@@ -70,8 +77,9 @@ do
 	
 	read answer
 
-	while [[ $answer=='Y' || $answer=='N' ]]
-	do
+	if [[ $answer=='Y' || $answer=='y' ]]
+	then
+		#CHECK if im at full health and a puncher
 		if [[ $answer=='Y' && $bad_health -eq 100 ]]
 		then
 			bad_health=$((bad_health-49))
@@ -79,30 +87,26 @@ do
 			echo "do you really wanna punch it? It just a fish."
 			echo "fish now has $bad_health hp"
 
-			#Break exit this while loop
-			break
+			
 		fi	
 
-		
-		#If I DONT punch fish counter goes up by one.
-		#Fisherman does 49 damage ( 3 punches to kill)
-
+	if [[ $answer=='N' || $answer=='n' ]]
 
 		#Choosing to not punch + different messages
 
-		if [[ $answer=='N' ]]; then
+		if [[ $answer=='N' && $counter==0 ]];
+	       	then
 			echo "Fish flinches.(You didnt punch it)"
-			let $counter=counter+1
-			break
-		fi	
+			((counter++))
+			
+			
 		
-		if [ $answer='N' ] && [ $counter=1 ]; then
+		elif [[ $answer=='N' && $counter==1 ]]; then
 			echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
-			let $counter=counter+1
-			break
-		fi	
+			((counter++))
+				
 
-		if [ $answer='N' ] && [ $counter=2 ]; then
+		elif [[ $answer=='N' && $counter=2 ]]; then
 			echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
 			echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
 			read
@@ -110,23 +114,19 @@ do
 
 			if [[ $answer=='Y' ]]; then
 				echo "Fish says do you wanna hang out. You hold nands and swim together.The fish tells you its name, its Anita a name that means grace. You watch the sunset. Gameover.. did you win...?"
-				$game_end=$((game_end+1))
-				break
+				((game_end++))
 			fi
 
 			if [[ $answer=='N' ]]; then
 				echo "fish grabs your fist and throws you to the side. GAME OVER."
-				$game_end=$((game_end+1))
-				break
+				((game_end++))
 			fi
 
 		else
 			echo "enter Y/N dude(plz restart script probs :] )"
-			$game_end=$((game_end+1))
-			break
-		fi
-	done
+			return
+		fi		
+	fi
 	
-
 done
 #(While loops done here)
