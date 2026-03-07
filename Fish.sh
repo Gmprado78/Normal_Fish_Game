@@ -1,13 +1,19 @@
 #! /bin/bash
 name=$1
 
-#This is a game regarding a feud between a fisherman and a fish. We may never know the relationship between these two charachters until now. Before running ./Fish.sh add your name.
+#This is a game regarding a feud between a fisherman and a fish. Punch or Before running ./Fish.sh add your name. 
 
 
+startword=0
 
-echo "You are fisherman named $name"
-echo "Knock the health out of that FISH!"
-
+while [[ startword -ne 0 ]]
+do
+	echo "You are fisherman named $name"
+	echo "Knock the health out of that FISH!"
+	echo " "
+	sleep 0.5
+	((startword++))
+done
 my_health=100
 bad_health=100
 counter=0
@@ -15,9 +21,9 @@ game_end=0
 
 
 #While fish is not dead and no game_end triggered
-while [[ $my_health -ne 0 && $game_end -eq 0 ]]
+while [[ $my_health -ne 0 || $game_end -ne 0 ]]
 do
-	echo "$counter counter is this long"	
+	#echo "$counter counter is this long"	
 	# GAME START MESSAGES
 	#
 
@@ -25,12 +31,24 @@ do
 	echo "Your health is $my_health"
 	echo "Wild fish health is $bad_health"
 	
+	#Here for pazzaz
+	echo " "
+	sleep 0.5
+
 	#Fish wrecklessly attacking you
 	echo "OUCH the fish slapped you"
 	my_health=$((my_health-10))
+
+
+	#Here for pazzaz
+	echo " "
+	sleep 0.5
+
 	echo "You took 10hp, you have $my_health hp"
 
 	#Display attack to do
+	sleep 0.67
+
 	echo "punch fish?(Y)"
 	echo "don't punch fish.(N)"
 
@@ -44,7 +62,7 @@ do
 	#CHECK IF FISH IS ABOUT TO DIE BEFORE NEXT ATTACK	
 	#IF fish was hurt twice already(2hp)
 		
-	if [[ $bad_health -le 2 ]];
+	if [[ $bad_health -eq 2 ]];
 	then
 		echo "You can still befriend this fish."
 		echo "Give the fish a chance..???(Y/N)"
@@ -75,12 +93,6 @@ do
 	fi
 
 
-	if [[ $bad_health -le 51 ]];
-	then
-		echo "Fish pulls up his sleeves. It's ready to slap you again.  It wont back down. >:( "
-
-	fi
-
 	#READ ANSWER OF INITIAL PUNCH FISH OR DONT
 	
 	read answer
@@ -88,7 +100,7 @@ do
 	if [[ $answer=='Y' || $answer=='y' ]]
 	then
 		#CHECK if im at full health and a puncher
-		if [[ $bad_health -eq 100 ]]
+		if [[ $bad_health -eq 100 && $answer= ]]
 		then
 			bad_health=$((bad_health-49))
 		
@@ -97,7 +109,7 @@ do
 			
 		
 		
-		elif [[ $bad_health -le 51 ]];
+		elif [[ $bad_health -eq 51 ]];
 		then
 			echo "Fish pulls up his sleeves. It's ready to slap you again.  It wont back down. >:( "
 			bad_health=$((bad_health-49))
