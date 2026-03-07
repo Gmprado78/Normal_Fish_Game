@@ -66,16 +66,17 @@ do
 		read answerz
 		
 		#Player chose to spare the fish
-		if [[ $answerz=='Y' || $answerz=='y' ]]
+		if [[ $answerz == 'Y' || $answerz == 'y' ]]
+
 		then
 			echo "The fish of an unknown name swims off to the sunset alone. It doesn't even look back. It did not wish to befriend you."
 			#Told this to gemini and this is the idea it gave me for incrementing
 			((game_end++))
 			break
 		
-
+		
 		#Player chose to not spare the fish
-		elif [[ $answerz=='N' || $answerz=='n' ]]
+		elif [[ $answerz == 'N' || $answerz == 'n' ]]
 		then
 
 			echo "Fish did not give you a chance. Fish whistles and calls its fishy friends. A shadow the size of a whale looms under your boat."
@@ -84,6 +85,8 @@ do
 			echo "Game over."
 			((game_end++))
 			break
+		else 
+			echo "This fish blinks and stares right back at you."
 		fi
 	
 	fi
