@@ -4,16 +4,12 @@ name=$1
 #This is a game regarding a feud between a fisherman and a fish. Punch or Before running ./Fish.sh add your name. 
 
 
-startword=0
 
-while [[ startword -ne 0 ]]
-do
-	echo "You are fisherman named $name"
-	echo "Knock the health out of that FISH!"
-	echo " "
-	sleep 0.5
-	((startword++))
-done
+echo "You are fisherman named $name"
+echo "Knock the health out of that FISH!"
+echo " "
+sleep 0.5
+
 my_health=100
 bad_health=100
 counter=0
