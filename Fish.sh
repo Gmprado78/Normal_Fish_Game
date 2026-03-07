@@ -96,7 +96,7 @@ do
 	if [[ $answer=='Y' || $answer=='y' ]]
 	then
 		#CHECK if im at full health and a puncher
-		if [[ $bad_health -eq 100 && $answer= ]]
+		if [[ $bad_health -eq 100 ]]
 		then
 			bad_health=$((bad_health-49))
 		
