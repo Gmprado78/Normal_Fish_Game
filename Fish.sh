@@ -66,6 +66,7 @@ do
 		read answerz
 		
 		#Player chose to spare the fish
+		#Asked claude if statement syntax error for bellow single line? told me i needed a space after variable.
 		if [[ $answerz == 'Y' || $answerz == 'y' ]]
 
 		then
@@ -96,7 +97,7 @@ do
 	
 	read answer
 
-	if [[ $answer=='Y' || $answer=='y' ]]
+	if [[ $answer == 'Y' || $answer == 'y' ]];
 	then
 		#CHECK if im at full health and a puncher
 		if [[ $bad_health -eq 100 ]]
@@ -121,7 +122,7 @@ do
 
 		#Choosing to not punch + different messages
 
-		if [[ $counter==0 ]];
+		if [[ $counter == 0 ]];
 	       	then
 			echo "Fish flinches.(You didnt punch it)"
 			echo "Counter is: $counter, incrementing..."
@@ -130,23 +131,23 @@ do
 			
 			
 		
-		elif [[ $counter==1 ]]; then
+		elif [[ $counter == 1 ]]; then
 			echo "(Fish raises eyebrow).You really don't wanna punch it.. you paci-fisht."
 			((counter++))
 				
 
-		elif [[ $counter==2 ]]; then
+		elif [[ $counter == 2 ]]; then
 			echo "Fish smiles and waves. It makes you pinky promise to never hurt a fish.EVER."
 			echo "do YOU accept this pinky promise? PUNCH or accept?(Y/N)"
 			read
 			
 
-			if [[ $answer=='Y' || $answer=='y' ]]; then
+			if [[ $answer == 'Y' || $answer == 'y' ]]; then
 				echo "Fish says do you wanna hang out. You hold nands and swim together.The fish tells you its name, its Anita a name that means grace. You watch the sunset. Gameover.. did you win...?"
 				((game_end++))
 			fi
 
-			if [[ $answer=='N' || $answer='n' ]]; then
+			if [[ $answer == 'N' || $answer == 'n' ]]; then
 				echo "fish grabs your fist and throws you to the side. GAME OVER."
 				((game_end++))
 			fi
